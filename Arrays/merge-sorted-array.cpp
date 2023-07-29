@@ -42,7 +42,7 @@ void print (int ans[],int n){
 
 int main(){
     int arr1[5]={1,3,5,7,9};
-    int arr2[4]={2,4,6,8};
+    int arr2[4]={3,4,6,8};
     int arr3[9]={0};
 
     mergeSorted(arr1,5,arr2,4,arr3);
