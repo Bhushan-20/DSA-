@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 void mergeSorted(int arr1[],int n,int arr2[],int m,int arr3[]){
