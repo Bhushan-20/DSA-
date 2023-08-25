@@ -16,6 +16,8 @@ class Node{
 
 
 };
+//Approach 1
+/*
 bool detectCycle(Node* head) {
     if (head == nullptr || head->next == nullptr) {
         return false;
@@ -30,7 +32,27 @@ bool detectCycle(Node* head) {
         temp = temp->next;
     }
     return false;
+} */
+
+//Approach 2 using floyd's cycle detection
+Node *detectCycle(Node *head) {
+    if (head == NULL)
+        return NULL;
+
+    Node *fast = head;
+    Node *slow = head;
+
+    while (fast != NULL && fast->next != NULL) {
+        fast = fast->next->next;
+        slow = slow->next;
+
+        if (fast == slow)
+            return fast;  
+    }
+
+    return NULL;  
 }
+
 
 int main() {
     Node* head = new Node(1);
