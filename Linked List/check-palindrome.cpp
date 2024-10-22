@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<stack>
 using namespace std;
 
 class ListNode {
@@ -15,7 +16,7 @@ class ListNode {
         this->next = NULL;
     }
 };
-//approach 1
+//approach 1->Brute force
 bool checkpalindrome(vector<int> arr){
       int n=arr.size();
       int s=0;
@@ -39,6 +40,32 @@ bool checkpalindrome(vector<int> arr){
         }
         return checkpalindrome(arr);
 } 
+
+//Approach2 -> Better Solution
+bool isPalindromeOrNot(ListNode* head) {
+    stack<int> st;
+    ListNode* temp = head;
+
+    // Push all elements of the linked list onto the stack
+    while (temp != NULL) {
+        st.push(temp->val);
+        temp = temp->next;
+    }
+
+    temp = head;
+
+    // Compare the elements from the stack with the linked list
+    while (!st.empty() && temp != NULL) {
+        if (st.top() != temp->val) {
+            return false;
+        }
+        st.pop();
+        temp = temp->next;
+    }
+
+    return true;
+}
+
 
 //Approach2
 /*ListNode* getMid(ListNode* head ) {
@@ -113,7 +140,7 @@ int main() {
     ListNode* current = head;
 
     // Call the isPalindrome function and print the result
-    if (isPalindrome(head)) {
+    if (isPalindromeOrNot(head)) {
         cout << "Linked list is a palindrome." << endl;
     } else {
         cout << "Linked list is not a palindrome." << endl;
